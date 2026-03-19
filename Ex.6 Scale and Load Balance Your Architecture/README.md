@@ -1,9 +1,16 @@
 # Lab 6 – Scale and Load Balance Your Architecture
 
+## Author
+
+
+* **Name**: SHIVANI M
+* **Register Number**: 212224040313
+* **Date of Submission**: 19.03.2026
+---
+
 ## Title
 
 Scale and Load Balance Your Architecture
-Author : your name   Reg no : yours   Date :
 
 ---
 
@@ -64,13 +71,38 @@ Students test the setup by generating traffic and observing automatic scaling an
 
 ---
 
-## Workflow (To be filled by Student)
+## Workflow (Student Explanation)
 
-Describe step-by-step how you performed this experiment in your own words.
+1. I reviewed the existing EC2-based application architecture that I had created in previous experiments to understand how the instances were configured and how the application was being accessed.
+
+2. I created a Launch Template by defining the EC2 configuration, including the Amazon Machine Image (AMI), instance type, key pair, security group, and user data script for automatic application setup during instance launch.
+
+3. Using the launch template, I created an Auto Scaling Group. I configured the minimum, maximum, and desired capacity values to control how many EC2 instances should run based on demand. I also selected the appropriate VPC and subnets.
+
+4. Next, I created an Application Load Balancer and configured a target group. I set the protocol and port (HTTP/HTTPS) and defined health check settings to monitor the EC2 instances.
+
+5. I attached the Auto Scaling Group to the target group so that any instances launched by the Auto Scaling Group would automatically register with the Load Balancer.
+
+6. I configured scaling policies based on CPU utilization. I created Amazon CloudWatch alarms to automatically increase the number of instances when CPU usage was high and decrease them when CPU usage was low.
+
+7. Finally, I tested the setup by generating traffic to the Load Balancer DNS name. I observed that the traffic was distributed evenly across instances and that additional instances were launched automatically when the CPU utilization threshold was exceeded.
 
 ---
 
 ## Output Screenshots 
+
+## Created LoadBalancer
+
+<img width="1917" height="1197" alt="Screenshot 2026-03-14 141911" src="https://github.com/user-attachments/assets/017d3525-4d55-4e6d-abdd-e5de2e133d20" />
+
+## Created LabConfig
+
+<img width="1919" height="1197" alt="Screenshot 2026-03-14 142118" src="https://github.com/user-attachments/assets/6ebbf377-5806-4cfb-839f-213ab60b51e4" />
+
+
+## Dynamic Scaling Policy created
+
+<img width="1919" height="985" alt="Screenshot 2026-03-15 203428" src="https://github.com/user-attachments/assets/3f705b18-28c9-4722-ad72-9649cdbf5a8e" />
 
 
 ---
